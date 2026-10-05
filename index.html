@@ -1,15 +1,633 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Art Portfolio</title>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" type="image/png" href="/images/favicon.png" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jose E. Garcia // Creative Developer & Digital Media Technologist</title>
+  <meta name="description" content="Contemporary minimal developer portfolio for Jose E Garcia tailored around digital media, high contrast typography, and neo blue cybernetic aesthetics." />
+  <meta name="keywords" content="Jose E Garcia, Creative Developer, Digital Media, WebGL, High Contrast, Minimal Portfolio, GitHub Pages" />
+  <meta name="author" content="Jose E. Garcia" />
 
-  </head>
-  <body>
-    <img src="Image/demo.png" alt="cat" width="500" height="600">
-    !hello world!
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Jose E. Garcia // Creative Developer & Digital Media Technologist" />
+  <meta property="og:description" content="Contemporary, minimal developer portfolio tailored around digital media styled with deep black aesthetic, bright high contrast typography, and neo blue accents." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://garciajoseeduard02-lab.github.io/Garcia/" />
+  <meta property="og:image" content="Image/demo.png" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="Image/demo.png" />
+</head>
+<body>
+
+  <!-- Ambient Hero Constellation & Particle Canvas -->
+  <canvas id="hero-canvas"></canvas>
+
+  <!-- ==========================================================================
+       TOP NAVIGATION
+       ========================================================================== -->
+  <nav class="site-nav" aria-label="Main Navigation">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-brand">
+        <span>JOSE E. GARCIA</span>
+        <span class="brand-badge">DEV // MEDIA</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#works"><span class="nav-index">01.</span>Works</a></li>
+        <li><a href="#lab"><span class="nav-index">02.</span>Digital Lab</a></li>
+        <li><a href="#capabilities"><span class="nav-index">03.</span>Capabilities</a></li>
+        <li><a href="#about"><span class="nav-index">04.</span>About</a></li>
+        <li><a href="#contact"><span class="nav-index">05.</span>Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <button id="sound-toggle" class="nav-cta-btn" title="Toggle cybernetic audio clicks" style="border-color: var(--border-medium); color: var(--neo-blue);">
+          AUDIO: [ON]
+        </button>
+        <a href="#contact" class="nav-cta-btn">
+          <span>GET IN TOUCH</span> &rarr;
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">MENU</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <header id="hero" class="hero-section">
+    <div class="container hero-content">
+      <div class="status-badge">
+        <span class="status-indicator"></span>
+        <span>STATUS: AVAILABLE FOR SELECT MEDIA SYSTEMS & CONTRACTS</span>
+      </div>
+
+      <h1 class="hero-title">
+        JOSE E. <span class="accent-gradient">GARCIA</span>
+      </h1>
+
+      <div class="hero-subtitle">
+        <span>// CREATIVE DEVELOPER</span>
+        <span>&bull;</span>
+        <span>DIGITAL MEDIA TECHNOLOGIST</span>
+        <span>&bull;</span>
+        <span style="color: var(--text-secondary);">[CA / REMOTE]</span>
+      </div>
+
+      <p class="hero-desc">
+        Crafting contemporary interactive environments, algorithmic visual systems, and high-performance digital media architectures. Built with <strong>radical clarity</strong>, <strong>deep black aesthetics</strong>, and <strong>high-velocity execution</strong>.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#works" class="btn btn-primary">
+          <span>EXPLORE WORKS</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="#lab" class="btn btn-secondary">
+          <span>LAUNCH DIGITAL LAB</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <div class="metric-value">04<span>+</span></div>
+          <div class="metric-label">Years Media Dev</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value">60<span>FPS</span></div>
+          <div class="metric-label">Target Visual Rate</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value">100<span>%</span></div>
+          <div class="metric-label">Vanilla Precision</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value">GLSL<span>&bull;TS</span></div>
+          <div class="metric-label">Stack Core</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       SECTION 01: FEATURED WORKS // DIGITAL MEDIA & ENGINEERING
+       ========================================================================== -->
+  <section id="works" class="works-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">// 01. SELECTED WORKS</span>
+        <h2>ENGINEERED EXPERIENCES & MEDIA</h2>
+        <p>A curated archive of real-time graphics, digital media tools, interactive platforms, and visual experiments.</p>
+      </div>
+
+      <!-- Category Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">[ALL WORK]</button>
+        <button class="filter-btn" data-filter="creative-code">CREATIVE CODE</button>
+        <button class="filter-btn" data-filter="digital-media">DIGITAL MEDIA</button>
+        <button class="filter-btn" data-filter="interactive-web">INTERACTIVE WEB</button>
+        <button class="filter-btn" data-filter="art-study">ART & STUDIES</button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="projects-grid">
+
+        <!-- Project 1: Spectra Synth -->
+        <article class="project-card" data-category="creative-code">
+          <div class="project-media-wrap">
+            <span class="project-index-badge">01 // CODE</span>
+            <div class="project-visual-preview">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">// Real-Time Graphics</span>
+            <h3 class="project-title">Spectra Synth</h3>
+            <p class="project-desc">
+              Browser-native procedural shader synthesizer leveraging WebGL fragment shaders and Web Audio API to translate audio frequencies into generative geometric topologies.
+            </p>
+            <div class="project-tags">
+              <span class="mono-tag">WebGL 2.0</span>
+              <span class="mono-tag">GLSL</span>
+              <span class="mono-tag">WebAudio</span>
+              <span class="mono-tag">TypeScript</span>
+            </div>
+            <div class="project-footer">
+              <a href="#lab" class="project-link">
+                <span>VIEW INTERACTIVE</span> &rarr;
+              </a>
+              <span class="mono-label" style="font-size: 0.7rem; color: var(--text-muted);">2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Luminary Media Engine -->
+        <article class="project-card" data-category="digital-media">
+          <div class="project-media-wrap">
+            <span class="project-index-badge">02 // MEDIA</span>
+            <div class="project-visual-preview">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                <line x1="7" y1="2" x2="7" y2="22"></line>
+                <line x1="17" y1="2" x2="17" y2="22"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <line x1="2" y1="7" x2="7" y2="7"></line>
+                <line x1="2" y1="17" x2="7" y2="17"></line>
+                <line x1="17" y1="17" x2="22" y2="17"></line>
+                <line x1="17" y1="7" x2="22" y2="7"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">// Video & Audio Pipeline</span>
+            <h3 class="project-title">Luminary Engine</h3>
+            <p class="project-desc">
+              Lightweight digital asset delivery layer with client-side FFmpeg WASM transcode, custom canvas shaders for video filter effects, and low-latency buffer management.
+            </p>
+            <div class="project-tags">
+              <span class="mono-tag">FFmpeg WASM</span>
+              <span class="mono-tag">HTML5 Video</span>
+              <span class="mono-tag">Canvas API</span>
+              <span class="mono-tag">Tailwind</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/garciajoseeduard02-lab/Garcia" target="_blank" rel="noopener" class="project-link">
+                <span>SOURCE REPO</span> &rarr;
+              </a>
+              <span class="mono-label" style="font-size: 0.7rem; color: var(--text-muted);">2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Nexus HUD Telemetry -->
+        <article class="project-card" data-category="interactive-web">
+          <div class="project-media-wrap">
+            <span class="project-index-badge">03 // TELEMETRY</span>
+            <div class="project-visual-preview">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="2" x2="12" y2="6"></line>
+                <line x1="12" y1="18" x2="12" y2="22"></line>
+                <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                <line x1="2" y1="12" x2="6" y2="12"></line>
+                <line x1="18" y1="12" x2="22" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">// Dashboard & Data Vis</span>
+            <h3 class="project-title">Nexus HUD Interface</h3>
+            <p class="project-desc">
+              High-contrast telemetry console built for monitoring live media streams and node pipelines with sub-millisecond graph updates, cybernetic HUD crosshairs, and WebSocket pipes.
+            </p>
+            <div class="project-tags">
+              <span class="mono-tag">React</span>
+              <span class="mono-tag">Canvas 2D</span>
+              <span class="mono-tag">WebSockets</span>
+              <span class="mono-tag">Dark Mode</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/garciajoseeduard02-lab/Garcia" target="_blank" rel="noopener" class="project-link">
+                <span>GITHUB PROJECT</span> &rarr;
+              </a>
+              <span class="mono-label" style="font-size: 0.7rem; color: var(--text-muted);">2024</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Digital Art Studies: Feline Form (Preserving Authentic Asset demo.png) -->
+        <article class="project-card" data-category="art-study">
+          <div class="project-media-wrap">
+            <span class="project-index-badge">04 // ART STUDY</span>
+            <img src="Image/demo.png" alt="Digital Art Study: Feline Form by Jose E Garcia" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <span class="project-category">// Digital Illustration & Media</span>
+            <h3 class="project-title">Digital Study: Form & Shade</h3>
+            <p class="project-desc">
+              Original digital artwork and visual asset study preserved from the Garcia laboratory archive. Explores organic silhouettes, tonal gradations, and raster rendering techniques.
+            </p>
+            <div class="project-tags">
+              <span class="mono-tag">Digital Art</span>
+              <span class="mono-tag">Raster 1322x1132</span>
+              <span class="mono-tag">PNG Archive</span>
+              <span class="mono-tag">Original Asset</span>
+            </div>
+            <div class="project-footer">
+              <a href="Image/demo.png" class="project-link" data-lightbox="true" data-src="Image/demo.png" data-title="Digital Study: Form & Shade" data-meta="Dimensions: 1322 x 1132 px // Color Space: sRGB // Asset: Image/demo.png">
+                <span>INSPECT ASSET</span> &rarr;
+              </a>
+              <span class="mono-label" style="font-size: 0.7rem; color: var(--text-muted);">ARCHIVE</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5: Kinetic Motion Playground -->
+        <article class="project-card" data-category="creative-code">
+          <div class="project-media-wrap">
+            <span class="project-index-badge">05 // MOTION</span>
+            <div class="project-visual-preview">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">// Algorithmic Typography</span>
+            <h3 class="project-title">Kinetic Font Dynamics</h3>
+            <p class="project-desc">
+              An interactive experiment disintegrating and reforming glyph contours based on cursor velocity, gravitational springs, and custom Verlet numerical integration.
+            </p>
+            <div class="project-tags">
+              <span class="mono-tag">Canvas 2D</span>
+              <span class="mono-tag">Physics Math</span>
+              <span class="mono-tag">Verlet Solver</span>
+              <span class="mono-tag">Motion</span>
+            </div>
+            <div class="project-footer">
+              <a href="#lab" class="project-link">
+                <span>TEST IN LAB</span> &rarr;
+              </a>
+              <span class="mono-label" style="font-size: 0.7rem; color: var(--text-muted);">2024</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6: Prism UI Framework -->
+        <article class="project-card" data-category="interactive-web">
+          <div class="project-media-wrap">
+            <span class="project-index-badge">06 // DESIGN SYSTEM</span>
+            <div class="project-visual-preview">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">// UI/UX & Component Lab</span>
+            <h3 class="project-title">Prism Cybernetic UI</h3>
+            <p class="project-desc">
+              Minimalist dark-mode design system optimized for digital media creators. Features high-contrast typography, accessible color tokens, glassmorphic surfaces, and keyboard navigability.
+            </p>
+            <div class="project-tags">
+              <span class="mono-tag">CSS Custom Props</span>
+              <span class="mono-tag">Accessibility</span>
+              <span class="mono-tag">Responsive</span>
+              <span class="mono-tag">Micro-FX</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/garciajoseeduard02-lab/Garcia" target="_blank" rel="noopener" class="project-link">
+                <span>EXPLORE SPECS</span> &rarr;
+              </a>
+              <span class="mono-label" style="font-size: 0.7rem; color: var(--text-muted);">2024</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 02: DIGITAL MEDIA LAB (LIVE INTERACTIVE SANDBOX)
+       ========================================================================== -->
+  <section id="lab" class="lab-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">// 02. INTERACTIVE EXPERIMENT</span>
+        <h2>DIGITAL MEDIA LAB</h2>
+        <p>Direct procedural canvas sandbox. Switch rendering algorithms, tweak frequency parameters, or click inside the viewport to trigger kinetic shockwaves.</p>
+      </div>
+
+      <div class="lab-terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-controls">
+            <span class="terminal-dot active"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-title">lab_engine.glsl // LIVE_PROCEDURAL_VIEWPORT</span>
+          </div>
+          <span class="terminal-badge" id="lab-mode-display">MODE: NEO_FLOW</span>
+        </div>
+
+        <div class="lab-viewport">
+          <canvas id="lab-canvas"></canvas>
+          <div class="lab-overlay-info">
+            <span>CLICK TO DISRUPT // MOUSE TO GUIDE</span>
+          </div>
+        </div>
+
+        <div class="lab-toolbar">
+          <div class="lab-presets">
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-right: 0.25rem;">ALGORITHM:</span>
+            <button class="preset-btn active" data-mode="NEO_FLOW">NEO FLOWFIELD</button>
+            <button class="preset-btn" data-mode="CYBER_MATRIX">CYBER LATTICE</button>
+            <button class="preset-btn" data-mode="AUDIO_PULSE">AUDIO SPECTRUM</button>
+          </div>
+
+          <div class="lab-sliders">
+            <div class="slider-group">
+              <label for="speed-slider">VELOCITY</label>
+              <input type="range" id="speed-slider" min="0.2" max="2.5" step="0.1" value="1.0" />
+            </div>
+            <div class="slider-group">
+              <label for="density-slider">DENSITY</label>
+              <input type="range" id="density-slider" min="20" max="120" step="5" value="60" />
+            </div>
+            <div class="slider-group">
+              <label for="glow-slider">LUMEN</label>
+              <input type="range" id="glow-slider" min="0.5" max="2.0" step="0.1" value="1.0" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 03: CAPABILITIES // TECHNICAL MATRIX
+       ========================================================================== -->
+  <section id="capabilities" class="skills-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-num">// 03. CAPABILITIES</span>
+        <h2>TECHNICAL & CREATIVE MATRIX</h2>
+        <p>Combining engineering discipline with digital media craftsmanship to deliver robust, immersive web experiences.</p>
+      </div>
+
+      <div class="skills-grid">
+
+        <!-- Category 1: Creative Coding -->
+        <div class="skill-category-card">
+          <div class="skill-icon-header">
+            <div class="skill-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <span class="mono-label">MATRIX 01</span>
+          </div>
+          <h3>Creative Code & Shaders</h3>
+          <p>Real-time mathematics, procedural graphics, and generative audio implementations.</p>
+          <ul class="skill-list">
+            <li><span>WebGL 2.0 / Canvas API</span> <span class="level">ADVANCED</span></li>
+            <li><span>GLSL Fragment Shaders</span> <span class="level">INTERMEDIATE</span></li>
+            <li><span>Web Audio API Synthesizers</span> <span class="level">PRACTITIONER</span></li>
+            <li><span>Generative & Particle Systems</span> <span class="level">SPECIALIST</span></li>
+            <li><span>Three.js / Mathematical Physics</span> <span class="level">EXP</span></li>
+          </ul>
+        </div>
+
+        <!-- Category 2: Frontend Engineering -->
+        <div class="skill-category-card">
+          <div class="skill-icon-header">
+            <div class="skill-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <span class="mono-label">MATRIX 02</span>
+          </div>
+          <h3>Frontend Engineering</h3>
+          <p>Modern browser architectures, clean component design, and zero-overhead performance.</p>
+          <ul class="skill-list">
+            <li><span>TypeScript / JavaScript (ESNext)</span> <span class="level">CORE</span></li>
+            <li><span>React & Next.js Architecture</span> <span class="level">PROFICIENT</span></li>
+            <li><span>Modern CSS / Tailwind / Tokens</span> <span class="level">ADVANCED</span></li>
+            <li><span>Vite / Webpack / Tooling</span> <span class="level">PROFICIENT</span></li>
+            <li><span>Web Accessibility (WCAG AA)</span> <span class="level">STANDARD</span></li>
+          </ul>
+        </div>
+
+        <!-- Category 3: Digital Media Tech -->
+        <div class="skill-category-card">
+          <div class="skill-icon-header">
+            <div class="skill-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+            </div>
+            <span class="mono-label">MATRIX 03</span>
+          </div>
+          <h3>Digital Media Production</h3>
+          <p>Visual asset synthesis, motion pipelines, raster/vector art, and audio engineering.</p>
+          <ul class="skill-list">
+            <li><span>Digital Art & Vector Design</span> <span class="level">CREATIVE</span></li>
+            <li><span>Motion Graphics & SVG Dynamic</span> <span class="level">ADVANCED</span></li>
+            <li><span>FFmpeg / Video Processing</span> <span class="level">PRACTITIONER</span></li>
+            <li><span>Blender 3D Modeling & Lighting</span> <span class="level">EXP</span></li>
+            <li><span>Figma UI/UX Prototyping</span> <span class="level">PROFICIENT</span></li>
+          </ul>
+        </div>
+
+        <!-- Category 4: Workflow & DevOps -->
+        <div class="skill-category-card">
+          <div class="skill-icon-header">
+            <div class="skill-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path></svg>
+            </div>
+            <span class="mono-label">MATRIX 04</span>
+          </div>
+          <h3>Deployment & Toolchain</h3>
+          <p>Reliable continuous integration, GitHub Pages deployment, and Lighthouse optimization.</p>
+          <ul class="skill-list">
+            <li><span>Git / GitHub Actions CI</span> <span class="level">PROFICIENT</span></li>
+            <li><span>GitHub Pages Hosting</span> <span class="level">OPTIMIZED</span></li>
+            <li><span>Lighthouse 100 Performance</span> <span class="level">STRICT</span></li>
+            <li><span>Linux / Unix Shell Workflows</span> <span class="level">FLUENT</span></li>
+            <li><span>REST APIs & WebSockets</span> <span class="level">PROFICIENT</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 04: ABOUT & PHILOSOPHY
+       ========================================================================== -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-text">
+          <div class="section-header" style="margin-bottom: 2rem;">
+            <span class="section-num">// 04. BACKGROUND & ETHOS</span>
+            <h2>MINIMALIST CLARITY. DIGITAL CRAFT.</h2>
+          </div>
+
+          <p>
+            Hello, I'm <strong>Jose E. Garcia</strong>. I operate at the convergence point where software engineering, digital media, and computational aesthetics intersect.
+          </p>
+          <p>
+            I believe modern web experiences are frequently bogged down by unnecessary frameworks and visual noise. My philosophy focuses on <strong>deep black backdrops</strong>, <strong>hyper-crisp typography</strong>, and <strong>purposeful neo-blue luminescence</strong> — ensuring that the digital content stands out with unmistakable authority.
+          </p>
+          <p>
+            Whether implementing browser-native shader synthesizers, architecting responsive web applications, or archiving digital illustrations, my approach prioritizes ultra-smooth 60fps interaction and clean, maintainable code.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-box">
+              <span class="box-num">ETHOS 01</span>
+              <h4>Low Latency</h4>
+              <p>Eliminating bloat to ensure instantaneous user response across any device.</p>
+            </div>
+            <div class="highlight-box">
+              <span class="box-num">ETHOS 02</span>
+              <h4>High Contrast</h4>
+              <p>Intentional visual hierarchy that commands attention through typography.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card-terminal">
+          <div class="terminal-header">
+            <div class="terminal-controls">
+              <span class="terminal-dot active"></span>
+              <span class="terminal-dot"></span>
+              <span class="terminal-dot"></span>
+              <span class="terminal-title">developer_profile.json</span>
+            </div>
+            <span class="terminal-badge">JSON // READONLY</span>
+          </div>
+
+          <pre class="terminal-code-body"><code>{
+  <span class="code-property">"developer"</span>: <span class="code-string">"Jose E. Garcia"</span>,
+  <span class="code-property">"specialization"</span>: [
+    <span class="code-string">"Creative Engineering"</span>,
+    <span class="code-string">"Digital Media Technology"</span>,
+    <span class="code-string">"High-Performance Frontend"</span>
+  ],
+  <span class="code-property">"core_aesthetic"</span>: {
+    <span class="code-property">"background"</span>: <span class="code-string">"#020204 // Deep Black"</span>,
+    <span class="code-property">"typography"</span>: <span class="code-string">"Space Grotesk + JetBrains Mono"</span>,
+    <span class="code-property">"accent"</span>: <span class="code-string">"#00f0ff // Electric Neo Blue"</span>
+  },
+  <span class="code-property">"gitHubPages"</span>: <span class="code-string">"https://garciajoseeduard02-lab.github.io/Garcia/"</span>,
+  <span class="code-property">"availability"</span>: <span class="code-keyword">true</span>,
+  <span class="code-property">"mission"</span>: <span class="code-string">"Elevate web media through code & art"</span>
+}</code></pre>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 05: CONTACT & FOOTER
+       ========================================================================== -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-card">
+        <span class="mono-label" style="margin-bottom: 1.25rem;">// INITIATE TRANSMISSION</span>
+        <h2>LET'S BUILD SOMETHING EXTRAORDINARY</h2>
+        <p>Available for digital media contracts, creative coding collaborations, and technical frontend roles.</p>
+
+        <div class="contact-actions">
+          <button id="copy-email-btn" class="copy-email-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>COPY EMAIL ADDRESS</span>
+          </button>
+          <a href="mailto:garcia.jose.eduardo02@gmail.com" class="btn btn-primary">
+            <span>SEND EMAIL DIRECT</span> &rarr;
+          </a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com/garciajoseeduard02-lab" target="_blank" rel="noopener" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span>GITHUB</span>
+          </a>
+          <a href="https://github.com/garciajoseeduard02-lab/Garcia" target="_blank" rel="noopener" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>GARCIA LAB REPO</span>
+          </a>
+          <a href="https://garciajoseeduard02-lab.github.io/Garcia/" target="_blank" rel="noopener" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span>LIVE GITHUB PAGES</span>
+          </a>
+        </div>
+      </div>
+
+      <footer class="site-footer">
+        <div class="footer-left">
+          <span>&copy; 2025 JOSE E. GARCIA</span>
+          <span>&bull;</span>
+          <span>ALL RIGHTS RESERVED</span>
+        </div>
+        <div class="footer-right">
+          <span id="live-clock">UTC 00:00:00 // SYS: ONLINE</span>
+          <span>&bull;</span>
+          <a href="#hero" style="color: var(--neo-blue);">BACK TO TOP &uarr;</a>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       LIGHTBOX MODAL & INTERACTIVE TOAST
+       ========================================================================== -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Media Preview">
+    <div class="lightbox-card">
+      <div class="lightbox-header">
+        <span id="lightbox-title" class="lightbox-title">// ASSET PREVIEW</span>
+        <button class="lightbox-close" aria-label="Close Lightbox">&times;</button>
+      </div>
+      <div class="lightbox-body">
+        <img id="lightbox-img" src="" alt="Digital Media Asset Preview" />
+        <div id="lightbox-details" class="lightbox-details"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-msg" class="toast-msg" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
 </body>
 </html>
