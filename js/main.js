@@ -549,3 +549,287 @@ function playTone(freq, duration) {
     // AudioContext blocked or unsupported
   }
 }
+
+/* ==========================================================================
+   09. 3D MODEL VIEWER CONTROLS & CAMERA PRESETS
+   ========================================================================== */
+function init3DViewer() {
+  const viewer = document.getElementById('artwork-model-viewer') || document.getElementById('portfolio-model-viewer');
+  if (!viewer) return;
+
+  const modelBtns = document.querySelectorAll('.model-btn[data-orbit]');
+  const rotateBtn = document.getElementById('toggle-rotate-btn');
+
+  modelBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modelBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const orbit = btn.getAttribute('data-orbit');
+      const target = btn.getAttribute('data-target');
+
+      if (orbit) viewer.cameraOrbit = orbit;
+      if (target) viewer.cameraTarget = target;
+
+      if (typeof playTone === 'function') playTone(640, 0.05);
+    });
+  });
+
+  if (rotateBtn) {
+    rotateBtn.addEventListener('click', () => {
+      viewer.autoRotate = !viewer.autoRotate;
+      rotateBtn.textContent = viewer.autoRotate ? 'ROTATE: [ON]' : 'ROTATE: [OFF]';
+      rotateBtn.classList.toggle('active', viewer.autoRotate);
+      if (typeof playTone === 'function') playTone(780, 0.06);
+    });
+  }
+}
+
+/* ==========================================================================
+   10. INTERACTIVE MOVING WIDGET WITH FULLSCREEN & 3D/2D SWITCHER
+   ========================================================================== */
+function initArtworkWidget() {
+  const container = document.getElementById('artwork-stage-container');
+  const widget = document.getElementById('artwork-moving-widget');
+  const telemetry = document.getElementById('widget-telemetry-text');
+  const fullscreenBtn = document.getElementById('widget-fullscreen-btn');
+  const cardFullscreenTrigger = document.getElementById('card-fullscreen-trigger');
+  const fullscreenExitBtn = document.getElementById('fullscreen-exit-btn');
+  const orbitToggle = document.getElementById('widget-orbit-toggle');
+  const speedToggle = document.getElementById('widget-speed-toggle');
+  const viewToggle = document.getElementById('widget-view-toggle');
+  const stageTag = document.getElementById('widget-stage-tag');
+  const reticle = document.getElementById('artwork-reticle');
+  const reticleCoord = document.getElementById('reticle-coord');
+  const radarBeam = document.getElementById('widget-radar-beam');
+  
+  const viewport3D = document.getElementById('viewport-3d');
+  const viewport2D = document.getElementById('viewport-2d');
+  const tabBtns = document.querySelectorAll('.view-tab-btn');
+  const modelViewer = document.getElementById('artwork-model-viewer');
+
+  if (!container || !widget) return;
+
+  let currentView = '3d';
+  let isOrbiting = true;
+  let speedMultiplier = 1.0;
+  let angle = 0.8; // radians
+  let targetAngle = null;
+
+  // View Switcher Function
+  function setView(view) {
+    currentView = view;
+    if (view === '3d') {
+      if (viewport3D) viewport3D.classList.add('active');
+      if (viewport2D) viewport2D.classList.remove('active');
+      tabBtns.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-target-view') === '3d'));
+      if (stageTag) stageTag.textContent = '✦ 3D OBJECT WIDGET';
+      if (reticleCoord) reticleCoord.textContent = 'TARGET: [3D OBJECT]';
+    } else {
+      if (viewport3D) viewport3D.classList.remove('active');
+      if (viewport2D) viewport2D.classList.add('active');
+      tabBtns.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-target-view') === '2d'));
+      if (stageTag) stageTag.textContent = '✦ 2D ARTWORK WIDGET';
+      if (reticleCoord) reticleCoord.textContent = 'TARGET: [2D IMAGE]';
+    }
+    if (typeof playTone === 'function') playTone(view === '3d' ? 840 : 620, 0.05);
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setView(btn.getAttribute('data-target-view'));
+    });
+  });
+
+  if (viewToggle) {
+    viewToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setView(currentView === '3d' ? '2d' : '3d');
+    });
+  }
+
+  // Fullscreen Management
+  function openFullscreen() {
+    // If not in 3D mode, switch to 3D for full 3D experience
+    if (currentView !== '3d') setView('3d');
+
+    if (container.requestFullscreen) {
+      container.requestFullscreen().catch(() => {
+        container.classList.add('fullscreen-active');
+        document.body.classList.add('has-fullscreen-modal');
+      });
+    } else if (container.webkitRequestFullscreen) {
+      container.webkitRequestFullscreen();
+    }
+    container.classList.add('fullscreen-active');
+    document.body.classList.add('has-fullscreen-modal');
+    if (typeof playTone === 'function') playTone(980, 0.08);
+  }
+
+  function closeFullscreen() {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+    container.classList.remove('fullscreen-active');
+    document.body.classList.remove('has-fullscreen-modal');
+    if (typeof playTone === 'function') playTone(440, 0.06);
+  }
+
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (container.classList.contains('fullscreen-active') || document.fullscreenElement) {
+        closeFullscreen();
+      } else {
+        openFullscreen();
+      }
+    });
+  }
+
+  if (cardFullscreenTrigger) {
+    cardFullscreenTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openFullscreen();
+    });
+  }
+
+  if (fullscreenExitBtn) {
+    fullscreenExitBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeFullscreen();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && (container.classList.contains('fullscreen-active') || document.fullscreenElement)) {
+      closeFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+      container.classList.remove('fullscreen-active');
+      document.body.classList.remove('has-fullscreen-modal');
+    }
+  });
+
+  // Autonomous Widget Orbit Animation Loop
+  let lastTime = performance.now();
+
+  function animate(now) {
+    const delta = (now - lastTime) / 1000;
+    lastTime = now;
+
+    const rect = container.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+
+    if (w > 0 && h > 0) {
+      if (isOrbiting) {
+        const angularSpeed = 0.45 * speedMultiplier;
+        angle += angularSpeed * delta;
+        if (angle > Math.PI * 2) angle -= Math.PI * 2;
+      } else if (targetAngle !== null) {
+        let diff = targetAngle - angle;
+        while (diff < -Math.PI) diff += Math.PI * 2;
+        while (diff > Math.PI) diff += Math.PI * 2;
+        angle += diff * 0.1;
+        if (Math.abs(diff) < 0.01) {
+          angle = targetAngle;
+          targetAngle = null;
+        }
+      }
+
+      // Elliptical trajectory around 3D object / artwork
+      const isFs = container.classList.contains('fullscreen-active');
+      const radiusX = (w / 2) * (isFs ? 0.46 : 0.44);
+      const radiusY = (h / 2) * (isFs ? 0.42 : 0.41);
+      const centerX = w / 2;
+      const centerY = h / 2;
+
+      const posX = centerX + Math.cos(angle) * radiusX;
+      const posY = centerY + Math.sin(angle) * radiusY;
+
+      widget.style.transform = `translate(${posX}px, ${posY}px)`;
+
+      if (radarBeam) {
+        const dx = centerX - posX;
+        const dy = centerY - posY;
+        const beamAngle = Math.atan2(dy, dx) * (180 / Math.PI);
+        const dist = Math.hypot(dx, dy);
+        radarBeam.style.width = `${Math.min(dist, 140)}px`;
+        radarBeam.style.transform = `rotate(${beamAngle}deg)`;
+      }
+
+      if (telemetry) {
+        const angleDeg = Math.round((angle * (180 / Math.PI)) % 360);
+        telemetry.textContent = `ORBIT: θ: ${String(angleDeg).padStart(3, '0')}° // X: ${Math.round(posX)} Y: ${Math.round(posY)}`;
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+
+  // Widget Controls
+  if (orbitToggle) {
+    orbitToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isOrbiting = !isOrbiting;
+      orbitToggle.textContent = isOrbiting ? 'PAUSE' : 'RESUME';
+      orbitToggle.style.background = isOrbiting ? 'rgba(0, 240, 255, 0.12)' : 'rgba(255, 200, 0, 0.2)';
+      if (typeof playTone === 'function') playTone(isOrbiting ? 700 : 400, 0.05);
+    });
+  }
+
+  if (speedToggle) {
+    speedToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (speedMultiplier === 1.0) {
+        speedMultiplier = 2.0;
+        speedToggle.textContent = '2X';
+      } else if (speedMultiplier === 2.0) {
+        speedMultiplier = 0.5;
+        speedToggle.textContent = '0.5X';
+      } else {
+        speedMultiplier = 1.0;
+        speedToggle.textContent = '1X';
+      }
+      if (typeof playTone === 'function') playTone(800, 0.05);
+    });
+  }
+
+  // Interactive Crosshair Reticle & Click Navigation
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    if (reticle) {
+      reticle.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      if (reticleCoord) {
+        reticleCoord.textContent = `TARGET: [${Math.round(mouseX)}, ${Math.round(mouseY)}]`;
+      }
+    }
+  });
+
+  container.addEventListener('click', (e) => {
+    if (e.target.closest('#artwork-moving-widget') || e.target.closest('.model-ctrl-pills') || e.target.closest('.artwork-view-switcher') || e.target.closest('.fullscreen-exit-btn')) return;
+
+    const rect = container.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    targetAngle = Math.atan2(clickY - centerY, clickX - centerX);
+    if (targetAngle < 0) targetAngle += Math.PI * 2;
+    if (typeof playTone === 'function') playTone(680, 0.05);
+  });
+}
+

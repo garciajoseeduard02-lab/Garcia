@@ -14,12 +14,12 @@
   <meta property="og:description" content="Contemporary, minimal developer portfolio tailored around digital media styled with deep black aesthetic, bright high contrast typography, and neo blue accents." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://garciajoseeduard02-lab.github.io/Garcia/" />
-  <meta property="og:image" content="Image/demo.png" />
+  <meta property="og:image" content="Image/image project.png" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="Image/demo.png" />
+  <link rel="icon" type="image/png" href="Image/image project.png" />
 </head>
 <body>
 
@@ -128,8 +128,7 @@
       <!-- Category Filter Bar -->
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">[ALL WORK]</button>
-        <button class="filter-btn" data-filter="3d-spatial">3D ARTIFACTS</button>
-        <button class="filter-btn" data-filter="art-study">ART STUDIES</button>
+        <button class="filter-btn" data-filter="art-study">3D & ART STUDIES</button>
         <button class="filter-btn" data-filter="creative-code">CREATIVE CODE</button>
         <button class="filter-btn" data-filter="digital-media">DIGITAL MEDIA</button>
         <button class="filter-btn" data-filter="interactive-web">INTERACTIVE WEB</button>
@@ -137,78 +136,6 @@
 
       <!-- Project Cards Grid -->
       <div class="projects-grid">
-
-        <!-- Project 01: 3D Artifact Study (Interactive WebGL / Model-Viewer Showcase) -->
-        <article class="project-card project-card--featured" data-category="3d-spatial art-study">
-          <div class="project-media-wrap model-media-wrap">
-            <span class="project-index-badge">01 // 3D ARTIFACT</span>
-            
-            <!-- Model Viewer -->
-            <model-viewer
-              id="portfolio-model-viewer"
-              src="3d asset/Project.glb"
-              alt="Interactive 3D Artifact Study by Jose E Garcia"
-              loading="lazy"
-              camera-controls
-              auto-rotate
-              auto-rotate-delay="1000"
-              rotation-per-second="20deg"
-              shadow-intensity="1.4"
-              shadow-softness="0.8"
-              exposure="1.05"
-              environment-image="neutral"
-              camera-orbit="0deg 75deg 105%"
-              field-of-view="30deg"
-              ar
-              touch-action="pan-y">
-              
-              <!-- Custom Loading Bar / Poster -->
-              <div slot="poster" class="model-loading-poster">
-                <div class="model-spinner"></div>
-                <span class="mono-label" style="font-size: 0.72rem; color: var(--neo-blue-bright); letter-spacing: 0.05em;">LOADING 3D ARTIFACT GALLERY (18.7 MB)...</span>
-              </div>
-            </model-viewer>
-
-            <!-- 3D Camera Controls & Viewpoint Switcher Overlay -->
-            <div class="model-controls-overlay">
-              <div class="model-ctrl-pills">
-                <button type="button" class="model-btn active" data-orbit="0deg 75deg 105%" data-target="0m 0m 0m" title="Global Exhibition View">OVERVIEW</button>
-                <button type="button" class="model-btn" data-orbit="-45deg 65deg 55%" data-target="-0.22m 0.39m 0.13m" title="Focus Lincoln Mask">LINCOLN</button>
-                <button type="button" class="model-btn" data-orbit="75deg 68deg 65%" data-target="-0.3m 0.25m 0m" title="Focus Space Shuttle">SHUTTLE</button>
-                <button type="button" class="model-btn" data-orbit="175deg 72deg 60%" data-target="0.35m 0.35m 0.4m" title="Focus Triceratops">TRICERATOPS</button>
-                <button type="button" class="model-btn" data-orbit="-125deg 55deg 60%" data-target="-0.1m 0.55m -0.2m" title="Focus Lycaste Orchid">ORCHID</button>
-                <button type="button" id="toggle-rotate-btn" class="model-btn" title="Toggle Auto-Rotation">ROTATE: [ON]</button>
-              </div>
-              <div class="model-telemetry">
-                <span class="telemetry-item"><span class="dot"></span>LIVE WEBGL2</span>
-                <span class="telemetry-item">GLTF/GLB // 18.7 MB WEB-OPTIMIZED</span>
-                <span class="telemetry-item">SMITHSONIAN 3D ARTIFACTS</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-body">
-            <span class="project-category">// 3D Spatial Computing & Interactive WebGL</span>
-            <h3 class="project-title">3D Artifact Study: Exhibition Space</h3>
-            <p class="project-desc">
-              Curated interactive 3D spatial gallery compiled in WebGL. Features museum-grade scans from Smithsonian 3D Open Access—including the <em>Abraham Lincoln Life Mask</em>, <em>Space Shuttle Discovery</em>, <em>Triceratops Horridus</em>, and <em>Lycaste Orchid</em>—optimized from 854 MB to 18.7 MB for instantaneous browser streaming, full interactive orbit, and smooth 60 FPS inspection.
-            </p>
-            <div class="project-tags">
-              <span class="mono-tag">WebGL 2.0</span>
-              <span class="mono-tag">model-viewer</span>
-              <span class="mono-tag">GLTF / GLB</span>
-              <span class="mono-tag">Smithsonian 3D</span>
-              <span class="mono-tag">18.7 MB Web-Optimized</span>
-              <span class="mono-tag">3D Asset Study</span>
-            </div>
-            <div class="project-footer">
-              <a href="https://github.com/garciajoseeduard02-lab/Garcia/blob/main/3d%20asset/Project.glb" target="_blank" rel="noopener" class="project-link">
-                <span>VIEW 3D FILE ON GITHUB</span> &rarr;
-              </a>
-              <span class="mono-label" style="font-size: 0.7rem; color: var(--neo-blue-bright);">[INTERACTIVE 3D]</span>
-            </div>
-          </div>
-        </article>
 
         <!-- Project 1: Spectra Synth -->
         <article class="project-card" data-category="creative-code">
@@ -318,32 +245,100 @@
           </div>
         </article>
 
-        <!-- Project 05: Digital Art Studies (With Interactive Moving Inspection Widget) -->
-        <article class="project-card project-card--artwork" data-category="art-study digital-media">
-          <div class="project-media-wrap artwork-stage-wrap" id="artwork-stage">
-            <span class="project-index-badge">05 // AUTHENTIC ARTWORK</span>
+        <!-- Project 4: Authentic Artwork & 3D Spatial Artifact (Dual 3D + 2D Interactive Stage with Fullscreen Widget) -->
+        <article class="project-card project-card--featured project-card--artwork" data-category="art-study digital-media">
+          <div class="project-media-wrap artwork-stage-wrap" id="artwork-stage-container">
+            <span class="project-index-badge">04 // 3D OBJECT & ARTWORK</span>
             
-            <!-- Authentic Artwork Asset Image -->
-            <img src="Image/image project.png" alt="Digital Art Study: Form & Shade by Jose E Garcia" id="artwork-hero-img" loading="lazy" />
+            <!-- View Switcher Tabs (3D Object vs 2D Image) -->
+            <div class="artwork-view-switcher">
+              <button type="button" class="view-tab-btn active" data-target-view="3d" title="Switch to Interactive 3D Model">
+                <span class="tab-dot"></span>✦ 3D OBJECT (Project.glb)
+              </button>
+              <button type="button" class="view-tab-btn" data-target-view="2d" title="Switch to Authentic 2D Raster Artwork">
+                <span class="tab-dot"></span>✦ 2D ARTWORK (image project.png)
+              </button>
+            </div>
+
+            <!-- Fullscreen Exit Button (Visible when Fullscreen active) -->
+            <button type="button" class="fullscreen-exit-btn" id="fullscreen-exit-btn" title="Exit Fullscreen Mode">
+              ✕ EXIT FULLSCREEN [ESC]
+            </button>
+
+            <!-- 3D Model Viewport (Active by default) -->
+            <div class="artwork-viewport active" id="viewport-3d">
+              <model-viewer
+                id="artwork-model-viewer"
+                src="3d asset/Project.glb"
+                alt="Interactive 3D Artifact Study by Jose E Garcia"
+                loading="eager"
+                camera-controls
+                auto-rotate
+                auto-rotate-delay="1000"
+                rotation-per-second="20deg"
+                shadow-intensity="1.4"
+                shadow-softness="0.8"
+                exposure="1.05"
+                environment-image="neutral"
+                camera-orbit="0deg 75deg 105%"
+                field-of-view="30deg"
+                ar
+                touch-action="pan-y">
+                
+                <div slot="poster" class="model-loading-poster">
+                  <div class="model-spinner"></div>
+                  <span class="mono-label" style="font-size: 0.72rem; color: var(--neo-blue-bright); letter-spacing: 0.05em;">LOADING 3D OBJECT (18.7 MB)...</span>
+                </div>
+              </model-viewer>
+
+              <!-- 3D Camera Controls & Viewpoint Switcher Overlay -->
+              <div class="model-controls-overlay">
+                <div class="model-ctrl-pills">
+                  <button type="button" class="model-btn active" data-orbit="0deg 75deg 105%" data-target="0m 0m 0m" title="Global Exhibition View">OVERVIEW</button>
+                  <button type="button" class="model-btn" data-orbit="-45deg 65deg 55%" data-target="-0.22m 0.39m 0.13m" title="Focus Lincoln Mask">LINCOLN</button>
+                  <button type="button" class="model-btn" data-orbit="75deg 68deg 65%" data-target="-0.3m 0.25m 0m" title="Focus Space Shuttle">SHUTTLE</button>
+                  <button type="button" class="model-btn" data-orbit="175deg 72deg 60%" data-target="0.35m 0.35m 0.4m" title="Focus Triceratops">TRICERATOPS</button>
+                  <button type="button" class="model-btn" data-orbit="-125deg 55deg 60%" data-target="-0.1m 0.55m -0.2m" title="Focus Lycaste Orchid">ORCHID</button>
+                  <button type="button" id="toggle-rotate-btn" class="model-btn" title="Toggle Auto-Rotation">ROTATE: [ON]</button>
+                </div>
+                <div class="model-telemetry">
+                  <span class="telemetry-item"><span class="dot"></span>LIVE WEBGL2</span>
+                  <span class="telemetry-item">GLB // 18.7 MB WEB-OPTIMIZED</span>
+                  <span class="telemetry-item">SMITHSONIAN 3D ARTIFACTS</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2D Image Viewport (Authentic image project.png) -->
+            <div class="artwork-viewport" id="viewport-2d">
+              <img src="Image/image project.png" alt="Digital Art Study: Form & Shade by Jose E Garcia" id="artwork-hero-img" loading="lazy" />
+              <div class="image-meta-badge">
+                <span>PNG ARCHIVE // 1322 x 1132 PX</span>
+              </div>
+            </div>
 
             <!-- Orbiting Track Ring -->
             <div class="artwork-orbit-track" aria-hidden="true"></div>
 
-            <!-- The Autonomous Moving Widget orbiting the artwork -->
-            <div class="artwork-moving-widget" id="artwork-moving-widget" role="region" aria-label="Artwork Inspector Widget">
+            <!-- The Autonomous Moving Widget Orbiting Around the 3D Object / Artwork -->
+            <div class="artwork-moving-widget" id="artwork-moving-widget" role="region" aria-label="3D Object & Artwork Inspector Widget">
               <div class="widget-beacon"></div>
               <div class="widget-body">
                 <div class="widget-header">
                   <span class="widget-pulse"></span>
-                  <span class="widget-tag">✦ ARTWORK INSPECT</span>
+                  <span class="widget-tag" id="widget-stage-tag">✦ 3D OBJECT WIDGET</span>
                 </div>
                 <div class="widget-telemetry-readout" id="widget-telemetry-text">
                   ORBIT: θ: 045° // X: 210 Y: 125
                 </div>
                 <div class="widget-ctrls">
+                  <!-- Fullscreen Button on the Widget -->
+                  <button type="button" class="widget-action-btn widget-btn-highlight" id="widget-fullscreen-btn" title="View in Full Screen">
+                    ⛶ FULLSCREEN
+                  </button>
                   <button type="button" class="widget-action-btn" id="widget-orbit-toggle" title="Pause or Resume Orbit">PAUSE</button>
                   <button type="button" class="widget-action-btn" id="widget-speed-toggle" title="Toggle Speed">1X</button>
-                  <button type="button" class="widget-action-btn" id="widget-focus-toggle" title="Focus Mode">FOCUS</button>
+                  <button type="button" class="widget-action-btn" id="widget-view-toggle" title="Toggle 3D / 2D View">3D / 2D</button>
                 </div>
               </div>
               <div class="widget-radar-beam" id="widget-radar-beam"></div>
@@ -358,33 +353,37 @@
                 <span class="corner br"></span>
                 <div class="cross-h"></div>
                 <div class="cross-v"></div>
-                <div class="reticle-label" id="reticle-coord">PX: [661, 566]</div>
+                <div class="reticle-label" id="reticle-coord">TARGET: [3D OBJECT]</div>
               </div>
             </div>
 
             <div class="artwork-hud-overlay">
-              <span class="artwork-hud-hint">HOVER OR CLICK TO COMMAND INSPECTION WIDGET</span>
+              <span class="artwork-hud-hint">HOVER OR DRAG // CLICK [⛶ FULLSCREEN] ON WIDGET</span>
             </div>
           </div>
 
           <div class="project-body">
-            <span class="project-category">// Original Digital Artwork & Visual Media</span>
-            <h3 class="project-title">Digital Study: Form & Shade</h3>
+            <span class="project-category">// 3D Spatial Computing & Digital Art Archive</span>
+            <h3 class="project-title">3D Artifact Study & Digital Art: Form & Spatial Space</h3>
             <p class="project-desc">
-              Original digital artwork and visual asset study preserved from the Garcia laboratory archive. Explores organic silhouettes, tonal gradations, and raster rendering techniques accompanied by an autonomous orbiting telemetry inspection widget.
+              Unified creative media stage housing both the authentic digital raster illustration (<em>Digital Study: Form &amp; Shade</em>) and the interactive real-time 3D spatial exhibition (<em>Project.glb</em>). Features an autonomous orbiting inspection widget with instant full-screen immersive view, real-time WebGL orbit controls, and Smithsonian museum-grade 3D assets.
             </p>
             <div class="project-tags">
-              <span class="mono-tag">Digital Art</span>
+              <span class="mono-tag">3D Object (.glb)</span>
+              <span class="mono-tag">WebGL 2.0</span>
+              <span class="mono-tag">Fullscreen Mode</span>
+              <span class="mono-tag">Autonomous Widget</span>
               <span class="mono-tag">Raster 1322x1132</span>
-              <span class="mono-tag">PNG Archive</span>
-              <span class="mono-tag">Moving Widget</span>
-              <span class="mono-tag">Autonomous Orbit</span>
+              <span class="mono-tag">18.7 MB Web-Optimized</span>
             </div>
             <div class="project-footer">
-              <a href="Image/image project.png" class="project-link" data-lightbox="true" data-src="Image/image project.png" data-title="Digital Study: Form & Shade" data-meta="Dimensions: 1322 x 1132 px // Color Space: sRGB // Archive: Garcia Laboratory">
-                <span>INSPECT FULL ASSET</span> &rarr;
+              <a href="https://github.com/garciajoseeduard02-lab/Garcia/blob/main/3d%20asset/Project.glb" target="_blank" rel="noopener" class="project-link">
+                <span>VIEW 3D FILE ON GITHUB</span> &rarr;
               </a>
-              <span class="mono-label" style="font-size: 0.7rem; color: var(--neo-blue-bright);">[WIDGET ACTIVE]</span>
+              <button type="button" class="project-link-btn" id="card-fullscreen-trigger">
+                <span>OPEN FULLSCREEN</span> &rarr;
+              </button>
+              <span class="mono-label" style="font-size: 0.7rem; color: var(--neo-blue-bright);">[DUAL 3D + 2D STAGE]</span>
             </div>
           </div>
         </article>
