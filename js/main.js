@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initEmailCopy();
   initLiveClock();
   initAudioSynth();
+  init3DViewer();
+  initArtworkWidget();
 });
 
 /* ==========================================================================
@@ -389,8 +391,9 @@ function initFilters() {
       playTone(520, 0.06);
 
       projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
+        const category = card.getAttribute('data-category') || '';
+        const cats = category.split(' ');
+        if (filter === 'all' || cats.includes(filter)) {
           card.style.display = 'flex';
           setTimeout(() => {
             card.style.opacity = '1';

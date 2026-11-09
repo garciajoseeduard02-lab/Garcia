@@ -128,14 +128,87 @@
       <!-- Category Filter Bar -->
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">[ALL WORK]</button>
+        <button class="filter-btn" data-filter="3d-spatial">3D ARTIFACTS</button>
+        <button class="filter-btn" data-filter="art-study">ART STUDIES</button>
         <button class="filter-btn" data-filter="creative-code">CREATIVE CODE</button>
         <button class="filter-btn" data-filter="digital-media">DIGITAL MEDIA</button>
         <button class="filter-btn" data-filter="interactive-web">INTERACTIVE WEB</button>
-        <button class="filter-btn" data-filter="art-study">ART & STUDIES</button>
       </div>
 
       <!-- Project Cards Grid -->
       <div class="projects-grid">
+
+        <!-- Project 01: 3D Artifact Study (Interactive WebGL / Model-Viewer Showcase) -->
+        <article class="project-card project-card--featured" data-category="3d-spatial art-study">
+          <div class="project-media-wrap model-media-wrap">
+            <span class="project-index-badge">01 // 3D ARTIFACT</span>
+            
+            <!-- Model Viewer -->
+            <model-viewer
+              id="portfolio-model-viewer"
+              src="3d asset/Project.glb"
+              alt="Interactive 3D Artifact Study by Jose E Garcia"
+              loading="lazy"
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="1000"
+              rotation-per-second="20deg"
+              shadow-intensity="1.4"
+              shadow-softness="0.8"
+              exposure="1.05"
+              environment-image="neutral"
+              camera-orbit="0deg 75deg 105%"
+              field-of-view="30deg"
+              ar
+              touch-action="pan-y">
+              
+              <!-- Custom Loading Bar / Poster -->
+              <div slot="poster" class="model-loading-poster">
+                <div class="model-spinner"></div>
+                <span class="mono-label" style="font-size: 0.72rem; color: var(--neo-blue-bright); letter-spacing: 0.05em;">LOADING 3D ARTIFACT GALLERY (18.7 MB)...</span>
+              </div>
+            </model-viewer>
+
+            <!-- 3D Camera Controls & Viewpoint Switcher Overlay -->
+            <div class="model-controls-overlay">
+              <div class="model-ctrl-pills">
+                <button type="button" class="model-btn active" data-orbit="0deg 75deg 105%" data-target="0m 0m 0m" title="Global Exhibition View">OVERVIEW</button>
+                <button type="button" class="model-btn" data-orbit="-45deg 65deg 55%" data-target="-0.22m 0.39m 0.13m" title="Focus Lincoln Mask">LINCOLN</button>
+                <button type="button" class="model-btn" data-orbit="75deg 68deg 65%" data-target="-0.3m 0.25m 0m" title="Focus Space Shuttle">SHUTTLE</button>
+                <button type="button" class="model-btn" data-orbit="175deg 72deg 60%" data-target="0.35m 0.35m 0.4m" title="Focus Triceratops">TRICERATOPS</button>
+                <button type="button" class="model-btn" data-orbit="-125deg 55deg 60%" data-target="-0.1m 0.55m -0.2m" title="Focus Lycaste Orchid">ORCHID</button>
+                <button type="button" id="toggle-rotate-btn" class="model-btn" title="Toggle Auto-Rotation">ROTATE: [ON]</button>
+              </div>
+              <div class="model-telemetry">
+                <span class="telemetry-item"><span class="dot"></span>LIVE WEBGL2</span>
+                <span class="telemetry-item">GLTF/GLB // 18.7 MB WEB-OPTIMIZED</span>
+                <span class="telemetry-item">SMITHSONIAN 3D ARTIFACTS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <span class="project-category">// 3D Spatial Computing & Interactive WebGL</span>
+            <h3 class="project-title">3D Artifact Study: Exhibition Space</h3>
+            <p class="project-desc">
+              Curated interactive 3D spatial gallery compiled in WebGL. Features museum-grade scans from Smithsonian 3D Open Access—including the <em>Abraham Lincoln Life Mask</em>, <em>Space Shuttle Discovery</em>, <em>Triceratops Horridus</em>, and <em>Lycaste Orchid</em>—optimized from 854 MB to 18.7 MB for instantaneous browser streaming, full interactive orbit, and smooth 60 FPS inspection.
+            </p>
+            <div class="project-tags">
+              <span class="mono-tag">WebGL 2.0</span>
+              <span class="mono-tag">model-viewer</span>
+              <span class="mono-tag">GLTF / GLB</span>
+              <span class="mono-tag">Smithsonian 3D</span>
+              <span class="mono-tag">18.7 MB Web-Optimized</span>
+              <span class="mono-tag">3D Asset Study</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/garciajoseeduard02-lab/Garcia/blob/main/3d%20asset/Project.glb" target="_blank" rel="noopener" class="project-link">
+                <span>VIEW 3D FILE ON GITHUB</span> &rarr;
+              </a>
+              <span class="mono-label" style="font-size: 0.7rem; color: var(--neo-blue-bright);">[INTERACTIVE 3D]</span>
+            </div>
+          </div>
+        </article>
 
         <!-- Project 1: Spectra Synth -->
         <article class="project-card" data-category="creative-code">
@@ -171,18 +244,6 @@
         </article>
 
         <!-- Project 2: Luminary Media Engine -->
-        <section class="model-container">
-    <h2>3D Artifact Study</h2>
-    <model-viewer
-        src="path/to/your-model.glb"
-        poster="path/to/poster-image.png"
-        alt="A 3D model of a creative artifact"
-        shadow-intensity="1"
-        camera-controls
-        auto-rotate
-        ar>
-    </model-viewer>
-</section>
         <article class="project-card" data-category="digital-media">
           <div class="project-media-wrap">
             <span class="project-index-badge">02 // MEDIA</span>
@@ -257,29 +318,73 @@
           </div>
         </article>
 
-        <!-- Project 4: Digital Art Studies: Feline Form (Preserving Authentic Asset image project.png) -->
-        <article class="project-card" data-category="art-study">
-          <div class="project-media-wrap">
-            <span class="project-index-badge">04 // ART STUDY</span>
-            <img src="Image/image project.png" alt="Digital Art Study: Feline Form by Jose E Garcia" loading="lazy" />
+        <!-- Project 05: Digital Art Studies (With Interactive Moving Inspection Widget) -->
+        <article class="project-card project-card--artwork" data-category="art-study digital-media">
+          <div class="project-media-wrap artwork-stage-wrap" id="artwork-stage">
+            <span class="project-index-badge">05 // AUTHENTIC ARTWORK</span>
+            
+            <!-- Authentic Artwork Asset Image -->
+            <img src="Image/image project.png" alt="Digital Art Study: Form & Shade by Jose E Garcia" id="artwork-hero-img" loading="lazy" />
+
+            <!-- Orbiting Track Ring -->
+            <div class="artwork-orbit-track" aria-hidden="true"></div>
+
+            <!-- The Autonomous Moving Widget orbiting the artwork -->
+            <div class="artwork-moving-widget" id="artwork-moving-widget" role="region" aria-label="Artwork Inspector Widget">
+              <div class="widget-beacon"></div>
+              <div class="widget-body">
+                <div class="widget-header">
+                  <span class="widget-pulse"></span>
+                  <span class="widget-tag">✦ ARTWORK INSPECT</span>
+                </div>
+                <div class="widget-telemetry-readout" id="widget-telemetry-text">
+                  ORBIT: θ: 045° // X: 210 Y: 125
+                </div>
+                <div class="widget-ctrls">
+                  <button type="button" class="widget-action-btn" id="widget-orbit-toggle" title="Pause or Resume Orbit">PAUSE</button>
+                  <button type="button" class="widget-action-btn" id="widget-speed-toggle" title="Toggle Speed">1X</button>
+                  <button type="button" class="widget-action-btn" id="widget-focus-toggle" title="Focus Mode">FOCUS</button>
+                </div>
+              </div>
+              <div class="widget-radar-beam" id="widget-radar-beam"></div>
+            </div>
+
+            <!-- Moving Target Crosshair Reticle -->
+            <div class="artwork-reticle" id="artwork-reticle" aria-hidden="true">
+              <div class="reticle-box">
+                <span class="corner tl"></span>
+                <span class="corner tr"></span>
+                <span class="corner bl"></span>
+                <span class="corner br"></span>
+                <div class="cross-h"></div>
+                <div class="cross-v"></div>
+                <div class="reticle-label" id="reticle-coord">PX: [661, 566]</div>
+              </div>
+            </div>
+
+            <div class="artwork-hud-overlay">
+              <span class="artwork-hud-hint">HOVER OR CLICK TO COMMAND INSPECTION WIDGET</span>
+            </div>
           </div>
+
           <div class="project-body">
-            <span class="project-category">// Digital Illustration & Media</span>
+            <span class="project-category">// Original Digital Artwork & Visual Media</span>
             <h3 class="project-title">Digital Study: Form & Shade</h3>
             <p class="project-desc">
-              Original digital artwork and visual asset study preserved from the Garcia laboratory archive. Explores organic silhouettes, tonal gradations, and raster rendering techniques.
+              Original digital artwork and visual asset study preserved from the Garcia laboratory archive. Explores organic silhouettes, tonal gradations, and raster rendering techniques accompanied by an autonomous orbiting telemetry inspection widget.
             </p>
             <div class="project-tags">
               <span class="mono-tag">Digital Art</span>
               <span class="mono-tag">Raster 1322x1132</span>
               <span class="mono-tag">PNG Archive</span>
-              <span class="mono-tag">Original Asset</span>
+              <span class="mono-tag">Moving Widget</span>
+              <span class="mono-tag">Autonomous Orbit</span>
             </div>
             <div class="project-footer">
-              <a href="Image/image project.png" class="project-link" data-lightbox="true" data-src="Image/image project.png" data-title="Digital Study: Form & Shade" data-meta="Dimensions: 1322 x 1132 px // Color Space: sRGB // Asset: Image/demo.png">
-                <span>INSPECT ASSET</span> &rarr;
+              <a href="Image/image project.png" class="project-link" data-lightbox="true" data-src="Image/image project.png" data-title="Digital Study: Form & Shade" data-meta="Dimensions: 1322 x 1132 px // Color Space: sRGB // Archive: Garcia Laboratory">
+                <span>INSPECT FULL ASSET</span> &rarr;
               </a>
-              <span class="mono-label" style="font-size: 0.7rem; color: var(--text-muted);">ARCHIVE</span>
+              <span class="mono-label" style="font-size: 0.7rem; color: var(--neo-blue-bright);">[WIDGET ACTIVE]</span>
             </div>
           </div>
         </article>
